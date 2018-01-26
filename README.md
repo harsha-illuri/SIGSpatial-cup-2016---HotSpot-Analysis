@@ -1,25 +1,17 @@
-# CSE512-Project-Hotspot-Analysis-Template
-#### Version history
-v1.1, Nov 16, Fix a bug in "Entrace.scala"
-v1.0, Nov 13, Initial version
-
+# SIGSpatial-cup-2016 HotSpot-Analysis
 
 ## Requirement
 
-In this phase, you are required to do spatial hot spot analysis. In particular, you need to complete two different hot spot analysis tasks 
+This is code for final project of distributed database systems, you can find the requirements of the project here https://github.com/jiayuasu/CSE512-Project-Hotspot-Analysis-Template. This problem statement is a modified problem statement of ACM SIGSpatial cup in 2016.
+
+
+The original problem definition page is here: [http://sigspatial2016.sigspatial.org/giscup2016/problem](http://sigspatial2016.sigspatial.org/giscup2016/problem) 
+
+The text and input/output specification has been copied from the template in the link above.
 
 
 ### Hot zone analysis
 This task will needs to perform a range join operation on a rectangle datasets and a point dataset. For each rectangle, the number of points located within the rectangle will be obtained. The hotter rectangle means that it include more points. So this task is to calculate the hotness of all the rectangles. 
-
-### Hot cell analysis
-
-#### Description
-This task will focus on applying spatial statistics to spatio-temporal big data in order to identify statistically significant spatial hot spots using Apache Spark. The topic of this task is from ACM SIGSPATIAL GISCUP 2016.
-
-The Problem Definition page is here: [http://sigspatial2016.sigspatial.org/giscup2016/problem](http://sigspatial2016.sigspatial.org/giscup2016/problem) 
-
-The Submit Format page is here: [http://sigspatial2016.sigspatial.org/giscup2016/submit](http://sigspatial2016.sigspatial.org/giscup2016/submit)
 
 #### Special requirement (different from GIS CUP)
 As stated in the Problem Definition page, in this task, you are asked to implement a Spark program to calculate the Getis-Ord statistic of NYC Taxi Trip datasets. We call it "**Hot cell analysis**"
@@ -33,7 +25,6 @@ To reduce the computation power need，we made the following changes:
 5. We don't use Jaccard similarity to check your answer.
 However, you don't need to worry about how to decide the cell coordinates because the code template generated cell coordinates. You just need to write the rest of the task.
 
-## Coding template specification
 
 ### Input parameters
 
@@ -46,12 +37,6 @@ Example
 test/output hotzoneanalysis src/resources/point-hotzone.csv src/resources/zone-hotzone.csv hotcellanalysis src/resources/yellow_tripdata_2009-01_point.csv
 ```
 
-Note: 
-
-1. The number/order of tasks do not matter.
-2. But, the first 7 of our final test cases on Vocareum will be hot zone analysis, the last 8 will be hot cell analysis.
-
-
 
 
 ### Input data format
@@ -61,75 +46,8 @@ The main function/entrace is "cse512.Entrance" scala file.
 
 2. Zone data (only for hot zone analysis): at "src/resources/zone-hotzone" of the template
 
-#### Hot zone analysis
-The input point data can be any small subset of NYC taxi dataset.
-
-#### Hot cell analysis
-The input point data is a monthly NYC taxi trip dataset (2009-2012) like "yellow\_tripdata\_2009-01\_point.csv"
-
-### Output data format
-
-#### Hot zone analysis
-All zones with their count, sorted by "rectangle" string in an ascending order. 
-
-```
-"-73.795658,40.743334,-73.753772,40.779114",1
-"-73.797297,40.738291,-73.775740,40.770411",1
-"-73.832707,40.620010,-73.746541,40.665414",20
-```
 
 
-#### Hot cell analysis
-The coordinates of top 50 hotest cells sorted by their G score in a descending order. Note, DO NOT OUTPUT G score.
-
-```
--7399,4075,15
--7399,4075,29
--7399,4075,22
-```
-### Example answers
-An example input and answer are put in "testcase" folder of the coding template
-
-
-## Where you need to change
-DO NOT DELETE any existing code in the coding template unless you see this "YOU NEED TO CHANGE THIS PART"
-
-### Hot zone analysis
-
-In the code template,
-
-1. You need to change "**HotzoneAnalysis.scala** and **HotzoneUtils.scala**".
-2. The coding template has loaded the data and wrote the first step, range join query, for you. Please finish the rest of the task.
-3. The output DataFrame should be sorted by you according to "rectangle" string.
-
-### Hot cell analysis
-In the code template,
-
-1. You need to change "**HotcellAnalysis.scala** and **HotcellUtils.scala**".
-2. The coding template has loaded the data and decided the cell coordinate, x, y, z and their min and max. Please finish the rest of the task.
-3. The output DataFrame should be sorted by you according to G-score. The coding template will take the first 50 to output. DO NOT OUTPUT G-score.
-
-
-## Submission
-### Deadline
-Dec 1st 11:59pm 2017
-### Submission files
-1. Submit your project jar package on Vocareum website to get your grade.
-2. Submit your project source code onto Blackboard in a compress zip file of "cse512-phase3-GROUPNAME" for plagiarism detection.
-3. Note that: you need to make sure your code can compile and package by entering ```sbt clean assembly```. We will run the compiled package on our cluster directly using "spark-submit" with parameters. If your code cannot compile and package, you will not receive any points.
-
-## Tips (Optional)
-This section is same with that in Phase 2.
-### How to debug your code in IDE
-
-If you are using the Scala template
-
-1. Use IntelliJ Idea with Scala plug-in or any other Scala IDE.
-2. Replace the logic of User Defined Functions ST\_Contains and ST\_Within in SpatialQuery.scala.
-3. Append ```.master("local[*]")``` after ```.config("spark.some.config.option", "some-value")``` to tell IDE the master IP is localhost.
-3. In some cases, you may need to go to "build.sbt" file and change ```% "provided"``` to ```% "compile"``` in order to debug your code in IDE
-4. Run your code in IDE
-5. **You must revert Step 3 and 4 above and recompile your code before use spark-submit!!!**
 
 ### How to submit your code to Spark
 If you are using the Scala template
