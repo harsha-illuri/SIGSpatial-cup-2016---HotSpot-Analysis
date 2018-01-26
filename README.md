@@ -7,7 +7,7 @@ This is code for final project of distributed database systems, you can find the
 
 The original problem definition page is here: [http://sigspatial2016.sigspatial.org/giscup2016/problem](http://sigspatial2016.sigspatial.org/giscup2016/problem) 
 
-our findings and results are here : SIGSpatial-cup-2016---HotSpot-Analysis/ProjectReport_BigDataAndSpark.pdf
+our findings and results are here : https://github.com/harsha-illuri/SIGSpatial-cup-2016---HotSpot-Analysis/blob/master/ProjectReport_BigDataAndSpark.pdf
 
 ### submit code to Spark
 1. Go to project root folder
