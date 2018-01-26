@@ -7,10 +7,9 @@ This is code for final project of distributed database systems, you can find the
 
 The original problem definition page is here: [http://sigspatial2016.sigspatial.org/giscup2016/problem](http://sigspatial2016.sigspatial.org/giscup2016/problem) 
 
+our findings and results are here : SIGSpatial-cup-2016---HotSpot-Analysis/ProjectReport_BigDataAndSpark.pdf
 
 ### submit code to Spark
-If you are using the Scala template
-
 1. Go to project root folder
 2. Run ```sbt clean assembly```. You may need to install sbt in order to run this command.
 3. Find the packaged jar in "./target/scala-2.11/CSE512-Project-Hotspot-Analysis-Template-assembly-0.1.0.jar"
